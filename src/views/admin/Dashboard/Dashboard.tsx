@@ -48,18 +48,7 @@ export const AdminDashboard = () => {
                             allProducts.map((item) => {
                                 return (
                                     <tr key={item.id} className="even:bg-tableLightGrey odd:bg-white">
-                                        <td className="flex justify-between flex-row items-center py-3 px-6 font-GoogleSansRegular text-[15px] text-appBlack">
-                                            {item.name}
-                                        </td>
-                                        <td className="py-3 px-6 font-GoogleSansRegular text-[15px] text-appBlack">
-                                            {item.weight}
-                                        </td>
-                                        <td className="py-3 px-6 font-GoogleSansRegular text-[15px] text-appBlack">
-                                            {item.startDate}
-                                        </td>
-                                        <td className="py-3 px-6 font-GoogleSansRegular text-[15px] text-appBlack">
-                                            {item.endDate}
-                                        </td>
+                                       <td></td>
                                     </tr>
                                 )
                             })

@@ -8,10 +8,14 @@ export type IProductsState  = {
 export type IProduct = {
     id: string,
     name: string,
-    price: string
-    weight: number,
-    startDate: string
-    endDate: string,
+    price: number,
+    category: string,
+    image: {
+        src: string,
+        alt: string
+    },
+    bestseller: boolean,
+    featured: boolean,
     count: number
 }
 

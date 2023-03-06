@@ -14,7 +14,7 @@ const AppNavbar: React.FC<IAppNavbarProps> = ({rightSide, routes}) => {
 
     return (
         <>
-            <div className="relative bg-white">
+            <div className="relative bg-white border-b-gray-400 border-b-4">
                 <div className="max-w-7xl mx-auto">
                     <div className="flex justify-between items-center py-6 md:justify-start md:space-x-10">
                         <AppLogo />

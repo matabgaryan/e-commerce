@@ -11,11 +11,8 @@ import {useAppDispatch} from "../../../../hooks/useRedux";
 import {AppButton} from "../../../buttons/BaseButton";
 
 export const NavbarRightSide = () => {
-    const dispatch = useAppDispatch();
-    const { isAuthenticated } = useSelector((state: RootState) => state.auth);
     const { items } = useSelector((state: RootState) => state.shopCart);
     const selectedItemsCount = items.length;
-    const { handleNavigate } = useNavigationHook();
     const { handleOpenModal } = useModalHook();
 
     return(
@@ -30,30 +27,6 @@ export const NavbarRightSide = () => {
                     </span>
                     </button>
                 </div>
-            }
-            {
-                isAuthenticated ?
-                    <AppButton
-                        variant={BUTTON_VARIANTS.transparent}
-                        onClick={() => dispatch(logout())}
-                        text="Logout"
-                        className="w-40"
-                    />
-                    :
-                    <>
-                        <AppButton
-                            variant={BUTTON_VARIANTS.transparent}
-                            onClick={() => handleOpenModal(MODAL_NAMES.loginModal)}
-                            text="Sign In As User"
-                            className="w-40"
-                        />
-                        <AppButton
-                            variant={BUTTON_VARIANTS.dark}
-                            onClick={() => handleNavigate(ROUTES.adminLogin)}
-                            text="Sign In As Admin"
-                            className="w-40"
-                        />
-                    </>
             }
         </div>
 

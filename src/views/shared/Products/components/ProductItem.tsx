@@ -12,16 +12,13 @@ export const ProductItem: React.FC<IProductItemProps> = ({product, addProductToC
     return (
         <div
             data-testid="product-item"
-            className="container mx-auto p-6 bg-white max-w-sm rounded-2xl overflow-hidden shadow-xl hover:shadow-2xl transition duration-300">
+            className="max-w-290 container mx-auto p-6 bg-white max-w-sm rounded-2xl overflow-hidden shadow-xl hover:shadow-2xl transition duration-300">
             <img className="rounded-xl" src={ProductImage} alt="Product"/>
             <div className="flex flex-col">
                 <h1 data-testid="product-item-name" className="mt-5 text-lg font-semibold">{product.name}</h1>
                 <AttributeInfo
                     attribute="Price"
                     value={`${product.price}$`} />
-                <AttributeInfo
-                    valueClassName="p-1 bg-redPrimary text-white rounded"
-                    attribute="Weight" value={`${product.weight} kg`} />
                 <AttributeInfo
                     attribute="Start Date"
                     value="May 10, 2022" />

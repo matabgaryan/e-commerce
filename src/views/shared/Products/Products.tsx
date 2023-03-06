@@ -9,20 +9,19 @@ import {BUTTON_VARIANTS} from "../../../constants/appConstants";
 export const Products = () => {
     const {
         isLoading, showAllProducts,
-        setShowAllProducts, allProducts, mostProbableProducts
+        setShowAllProducts, allProducts, mostProbableProducts, handleFilterByCategory
     } = useProducts();
 
     return (
         <Container>
             <div className="w-full flex flex-col items-center">
-                <div className="w-full">
-                    <p className="text-appBlack font-GoogleSansBold font-[700] text-[22px]">
-                        Shop by Collection
-                    </p>
-                    <p className="max-w-2xl font-GoogleSansRegular font-[400] text-[18px] text-appBlack">
-                        Each season, we collaborate with world class designers to create a
-                        collection inspired by natural world.
-                    </p>
+                <div className="w-full pt-14">
+                    <div className="flex flex-row">
+                        <p className="text-appBlack font-GoogleSansBold font-[700] text-[30px]">
+                            Photography /
+                        </p>
+                        <p className="text-lightGrey font-GoogleSansBold font-[400] text-[30px]">Premium Photos</p>
+                    </div>
                 </div>
                 <div className="w-full flex items-center justify-end">
                     <AppButton
@@ -39,7 +38,9 @@ export const Products = () => {
                     />
                 </div>
                 {isLoading ? <PageLoader/> :
-                    <ProductsList products={showAllProducts ? allProducts : mostProbableProducts}/>
+                    <ProductsList
+                        handleFilterByCategory={handleFilterByCategory}
+                        products={showAllProducts ? allProducts : mostProbableProducts}/>
                 }
             </div>
         </Container>

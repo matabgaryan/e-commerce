@@ -27,22 +27,22 @@ export class ProductsFilter {
     getCumulativeWeights():number[] {
         const cumulativeWeights: number[] = [];
         for (let i = 0; i < this.products.length; i += 1) {
-            cumulativeWeights[i] = this.products[i].weight + (cumulativeWeights[i - 1] || 0);
+            cumulativeWeights[i] = this.products[i].price + (cumulativeWeights[i - 1] || 0);
         }
         return cumulativeWeights;
     }
 
     sortProducts(a: IProduct, b: IProduct){
-            if ( b.weight < a.weight ){
+            if ( b.price < a.price ){
                 return -1;
             }
-            if ( b.weight > a.weight ){
+            if ( b.price > a.price ){
                 return 1;
             }
             return 0;
     }
 
-    getProductsByWeightProbability(count: number):IProduct[] {
+    getProductsByPriceProbability(count: number):IProduct[] {
         const cumulativeWeights: number[] = this.getCumulativeWeights();
         const maxCumulativeWeight: number = cumulativeWeights[cumulativeWeights.length - 1];
         const res: IProduct[] = [];
@@ -58,6 +58,20 @@ export class ProductsFilter {
             }
         }
         return res.sort(this.sortProducts)
+    }
+
+    filterByPriceRang(minPrice:number, maxPrice: number) {
+        return this.products.filter(product => product.price >= minPrice && product.price <= maxPrice);
+    }
+
+    filterByCategory(category: string) {
+        return this.products.filter(product => product.category === category);
+    }
+
+    filterByPrice() {
+        const sortedByLowestPrice = this.products.slice().sort((a, b) => a.price - b.price);
+        const sortedByHighestPrice = this.products.slice().sort((a, b) => b.price - a.price);
+        return { lowest: sortedByLowestPrice, highest: sortedByHighestPrice };
     }
 }
 

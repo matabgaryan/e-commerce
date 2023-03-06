@@ -2,7 +2,6 @@ import React, {useState} from "react";
 import {useAppDispatch} from "./useRedux";
 import {generatedUuid} from "../core/utils/uuid";
 import {addProducts} from "../store/slices/products";
-import {IProduct} from "../store/slices/interface";
 import {useNavigationHook} from "./useNavigation";
 import {ROUTES} from "../configs/routes";
 
@@ -10,8 +9,8 @@ export const useCreateProductHook = () => {
     const dispatch = useAppDispatch();
     const { handleNavigate } = useNavigationHook();
 
-    const [formFields, setFormFields] = useState<IProduct[]>([
-        {id: generatedUuid(),  name: '', price: '', weight: 0, startDate: '', endDate: '', count: 0 },
+    const [formFields, setFormFields] = useState<any[]>([
+        {id: generatedUuid(),  name: '', price: '',   count: 0 },
     ])
 
     const handleFormChange = (event:  React.ChangeEvent<HTMLInputElement>, index: number) => {

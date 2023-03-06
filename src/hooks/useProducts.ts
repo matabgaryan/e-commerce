@@ -18,11 +18,16 @@ export const useProducts = () => {
         if (!products.length) dispatch(getProducts());
     }, [products]);
 
+    const handleFilterByCategory = (category: string) => {
+        return productsFilter.filterByCategory(category);
+    }
+
     return {
         allProducts: products,
-        mostProbableProducts: productsFilter.getProductsByWeightProbability(PRODUCTS_COUNT),
+        mostProbableProducts: productsFilter.getProductsByPriceProbability(PRODUCTS_COUNT),
         isLoading: status === STATUS.PENDING,
         showAllProducts,
+        handleFilterByCategory,
         setShowAllProducts,
     }
 }
